@@ -1,10 +1,15 @@
 <template>
     <div>
          miste
+        <in-miste></in-miste>
     </div>
 </template>
 <script>
+    import inMiste from './inmiste.vue'
     export default {
+        components:{
+            inMiste:inMiste
+        },
         beforeCreate(){
             console.log('msite.Vue BeforeCreate')
         },

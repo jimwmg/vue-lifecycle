@@ -1,10 +1,16 @@
 <template>
   <div >
     <div @click='forceUpdate'>app</div>
-        <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
+		<router-link to='home'>home</router-link>
+		<router-link to='miste' >miste</router-link>
+		<div @click ='goHome'>home</div>
+		<div @click ='goMiste'>miste</div>
+		<div @click='goParmas'>goParams</div>
+		<!-- <keep-alive>
+				<router-view v-if="$route.meta.keepAlive"></router-view>
+		</keep-alive>
+		<router-view v-if="!$route.meta.keepAlive"></router-view> -->
+		<router-view></router-view>
   </div>
 </template>
 
@@ -14,6 +20,15 @@ export default {
     methods:{
 			forceUpdate(){
 				this.$forceUpdate();
+			},
+			goHome(){
+				this.$router.push({path:'/home'})
+			},
+			goMiste(){
+				this.$router.push({path:'miste'})
+			},
+			goParmas(){
+				this.$router.push({params:'parmasID'})
 			}
 		},
 		beforeCreate(){

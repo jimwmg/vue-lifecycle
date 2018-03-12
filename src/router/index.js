@@ -3,10 +3,13 @@ import Router from 'vue-router'
 import APP from '../App'
 import HOME from '../components/home'
 import MISTE from '../components/miste'
+import ELE from '../components/ele'
 Vue.use(Router)
-export default new Router({
+
+const router =  new Router({
     routes:[{
-        path:'/',
+        path:'/app',
+        name:'app',
         component:APP,
         children:[
             {
@@ -14,10 +17,19 @@ export default new Router({
               component:HOME
             },
             {
-              path:'/miste',
+              path:'miste',
               component:MISTE,
               meta: { keepAlive: true },//这个组件会被缓存
             }
         ]
+    },{
+        path:'/ele',
+        component:ELE
     }]
 });
+
+router.beforeEach((to,from,next)=>{
+    console.log('to',to,'from',from)
+    next()
+})
+export default router ;

@@ -62,8 +62,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
+      //用于在dist文件夹下生成index.html，如果是test1/test2/index.html则会生成文件夹
+      // filename:'/index.html',
       template: 'index.html',
-      inject: true,
+      inject: true,//该选项表示将生成的javascript资源添加在html那个位置，true表示在头部
       minify: {
         removeComments: true,
         collapseWhitespace: true,

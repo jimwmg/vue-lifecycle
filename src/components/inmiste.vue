@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id='miste'>
          i am inmiste
     </div>
 </template>
@@ -37,3 +37,8 @@
         }
     }
 </script>
+<style>
+#miste {
+  background-color:red
+}
+</style>

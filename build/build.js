@@ -1,7 +1,7 @@
 'use strict'
-require('./check-versions')()
+require('./check-versions')() //首先进行本机node和npm版本的判断
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production' //build为生成环境，以后要打包上线
 
 const ora = require('ora')
 const rm = require('rimraf')
@@ -13,7 +13,7 @@ const webpackConfig = require('./webpack.prod.conf')
 
 const spinner = ora('building for production...')
 spinner.start()
-
+// 删除文件或者文件夹，兼容mac或者window,此时指的是dist/static
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {

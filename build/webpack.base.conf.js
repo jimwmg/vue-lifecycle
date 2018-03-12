@@ -12,8 +12,9 @@ function resolve (dir) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
+  //基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
   entry: {
-    app: './src/main.js'
+    app: './src/main.js' //相对于context路径
   },
   output: {
     path: config.build.assetsRoot,
@@ -40,6 +41,14 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
